@@ -13,6 +13,6 @@ namespace ASPGuid.Models
         public string Name { get; set; }
         [BsonElement("routes")]
         [BsonRepresentation(BsonType.Array)]
-        public IEnumerable<Route> cities { get; set; }
+        public IEnumerable<Route> routes { get; set; }
     }
 }
