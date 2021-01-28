@@ -9,6 +9,7 @@ namespace ASPGuid.Models
     public class GuidDatabaseSettings : IGuidDatabaseSettings
     {
         public string PlacesCollectionName { get; set; }
+        public string CountriesCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
 
@@ -17,6 +18,7 @@ namespace ASPGuid.Models
     public interface IGuidDatabaseSettings
     {
         string PlacesCollectionName { get; set; }
+        string CountriesCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

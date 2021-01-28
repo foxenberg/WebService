@@ -40,15 +40,15 @@ namespace ASPGuid.Controllers
         {
             _placeService.Create(place);
 
-            return CreatedAtRoute("GetBook", new { id = place.Id.ToString() }, place);
+            return CreatedAtRoute("GetPlace", new { id = place.Id.ToString() }, place);
         }
 
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Models.Place placeIn)
         {
-            var book = _placeService.Get(id);
+            var place = _placeService.Get(id);
 
-            if (book == null)
+            if (place == null)
             {
                 return NotFound();
             }
