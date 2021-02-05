@@ -10,7 +10,9 @@ namespace ASPGuid.Models
     
     public class Route
     {
-        
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         [BsonElement("name")]
         public string Name { get; set; }
     }

@@ -15,7 +15,7 @@ namespace ASPGuid.Models
         [BsonElement("name")]
         public string Name { get; set; }
         [BsonElement("city")]
-        [BsonRepresentation(BsonType.Array)]
+        
         public IEnumerable<City> cities { get; set; }
 
         
