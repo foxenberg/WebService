@@ -13,9 +13,9 @@ namespace ASPGuid.Services
 
         public PlaceService(Models.IGuidDatabaseSettings settings)
         {
-
+            MongoUrlBuilder mongoUrl = new MongoUrlBuilder(settings.ConnectionString);
             var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+            var database = client.GetDatabase(mongoUrl.DatabaseName);
 
             _places = database.GetCollection<Models.Place>(settings.PlacesCollectionName);
 
