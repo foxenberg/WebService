@@ -12,8 +12,9 @@ namespace ASPGuid.Services
 
         public RouteService(Models.IGuidDatabaseSettings settings)
         {
+            MongoUrlBuilder mongoUrl = new MongoUrlBuilder(settings.ConnectionString);
             var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+            var database = client.GetDatabase(mongoUrl.DatabaseName);
 
             _routes = database.GetCollection<Models.Route>(settings.RoutesCollectionName);
         }
