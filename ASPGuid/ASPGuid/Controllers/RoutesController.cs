@@ -11,21 +11,21 @@ namespace ASPGuid.Controllers
     [ApiController]
     public class RoutesController : ControllerBase
     {
-        private readonly RouteService _countryService;
+        private readonly RouteService _routeService;
 
-        public RoutesController(RouteService countryService)
+        public RoutesController(RouteService routeService)
         {
-            _countryService = countryService;
+            _routeService = routeService;
         }
 
         [HttpGet]
         public ActionResult<List<Models.Route>> Get() =>
-        _countryService.Get();
+        _routeService.Get();
 
-        [HttpGet("{id:length(24)}", Name = "GetCountry")]
+        [HttpGet("{id:length(24)}", Name = "GetRoute")]
         public ActionResult<Models.Route> Get(string id)
         {
-            var country = _countryService.Get(id);
+            var country = _routeService.Get(id);
 
             if (country == null)
             {
@@ -36,24 +36,24 @@ namespace ASPGuid.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Models.Route> Create(Models.Route country)
+        public ActionResult<Models.Route> Create(Models.Route route)
         {
-            _countryService.Create(country);
+            _routeService.Create(route);
 
-            return CreatedAtRoute("GetCountry", new { id = country.Id.ToString() }, country);
+            return CreatedAtRoute("GetCountry", new { id = route.Id.ToString() }, route);
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Models.Route countryIn)
+        public IActionResult Update(string id, Models.Route routeIn)
         {
-            var country = _countryService.Get(id);
+            var route = _routeService.Get(id);
 
-            if (country == null)
+            if (route == null)
             {
                 return NotFound();
             }
 
-            _countryService.Update(id, countryIn);
+            _routeService.Update(id, routeIn);
 
             return NoContent();
         }
@@ -61,14 +61,14 @@ namespace ASPGuid.Controllers
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var country = _countryService.Get(id);
+            var route = _routeService.Get(id);
 
-            if (country == null)
+            if (route == null)
             {
                 return NotFound();
             }
 
-            _countryService.Remove(country.Id);
+            _routeService.Remove(route.Id);
 
             return NoContent();
         }

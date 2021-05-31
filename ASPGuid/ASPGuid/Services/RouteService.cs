@@ -8,33 +8,33 @@ namespace ASPGuid.Services
 {
     public class RouteService
     {
-        private readonly IMongoCollection<Models.Route> _countries;
+        private readonly IMongoCollection<Models.Route> _routes;
 
         public RouteService(Models.IGuidDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _countries = database.GetCollection<Models.Route>(settings.RoutesCollectionName);
+            _routes = database.GetCollection<Models.Route>(settings.RoutesCollectionName);
         }
 
         public List<Models.Route> Get() =>
-            _countries.Find(country => true).ToList();
+            _routes.Find(route => true).ToList();
 
         public Models.Route Get(string Id) =>
-            _countries.Find<Models.Route>(country => country.Id == Id).FirstOrDefault();
+            _routes.Find<Models.Route>(country => country.Id == Id).FirstOrDefault();
 
-        public Models.Route Create(Models.Route country)
+        public Models.Route Create(Models.Route route)
         {
-            _countries.InsertOne(country);
-            return country;
+            _routes.InsertOne(route);
+            return route;
         }
-        public void Update(string Id, Models.Route countryIn) =>
-            _countries.ReplaceOne(country => country.Id == Id, countryIn);
+        public void Update(string Id, Models.Route routeIn) =>
+            _routes.ReplaceOne(country => country.Id == Id, routeIn);
 
-        public void Remove(Models.Route countryIn) =>
-           _countries.DeleteOne(country => country.Id == countryIn.Id);
+        public void Remove(Models.Route routeIn) =>
+           _routes.DeleteOne(country => country.Id == routeIn.Id);
         public void Remove(string Id) =>
-            _countries.DeleteOne(country => country.Id == Id);
+            _routes.DeleteOne(country => country.Id == Id);
     }
 }
