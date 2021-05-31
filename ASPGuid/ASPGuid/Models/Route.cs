@@ -26,6 +26,7 @@ namespace ASPGuid.Models
         public string Rating { get; set; }
         [BsonElement("topic")]
         public string Topic { get; set; }
+        [BsonElement("placesForRoute")]
         public IEnumerable<PlacesForRoute> PlacesForRoute { get; set; }
 
         
