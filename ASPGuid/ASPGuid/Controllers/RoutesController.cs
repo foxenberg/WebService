@@ -11,9 +11,9 @@ namespace ASPGuid.Controllers
     [ApiController]
     public class RoutesController : ControllerBase
     {
-        private readonly CountryService _countryService;
+        private readonly RouteService _countryService;
 
-        public RoutesController(CountryService countryService)
+        public RoutesController(RouteService countryService)
         {
             _countryService = countryService;
         }

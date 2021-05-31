@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace ASPGuid.Services
 {
-    public class CountryService
+    public class RouteService
     {
         private readonly IMongoCollection<Models.Route> _countries;
 
-        public CountryService(Models.IGuidDatabaseSettings settings)
+        public RouteService(Models.IGuidDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _countries = database.GetCollection<Models.Route>(settings.CountriesCollectionName);
+            _countries = database.GetCollection<Models.Route>(settings.RoutesCollectionName);
         }
 
         public List<Models.Route> Get() =>

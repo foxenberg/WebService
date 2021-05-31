@@ -34,7 +34,7 @@ namespace ASPGuid
                 sp.GetRequiredService<IOptions<Models.GuidDatabaseSettings>>().Value);
 
             services.AddSingleton<PlaceService>();
-            services.AddSingleton<CountryService>(); 
+            services.AddSingleton<RouteService>(); 
 
             services.AddControllers();
         }
