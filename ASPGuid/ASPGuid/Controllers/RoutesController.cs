@@ -9,21 +9,21 @@ namespace ASPGuid.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountriesController : ControllerBase
+    public class RoutesController : ControllerBase
     {
         private readonly CountryService _countryService;
 
-        public CountriesController(CountryService countryService)
+        public RoutesController(CountryService countryService)
         {
             _countryService = countryService;
         }
 
         [HttpGet]
-        public ActionResult<List<Models.Country>> Get() =>
+        public ActionResult<List<Models.Route>> Get() =>
         _countryService.Get();
 
         [HttpGet("{id:length(24)}", Name = "GetCountry")]
-        public ActionResult<Models.Country> Get(string id)
+        public ActionResult<Models.Route> Get(string id)
         {
             var country = _countryService.Get(id);
 
@@ -36,7 +36,7 @@ namespace ASPGuid.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Models.Country> Create(Models.Country country)
+        public ActionResult<Models.Route> Create(Models.Route country)
         {
             _countryService.Create(country);
 
@@ -44,7 +44,7 @@ namespace ASPGuid.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Models.Country countryIn)
+        public IActionResult Update(string id, Models.Route countryIn)
         {
             var country = _countryService.Get(id);
 

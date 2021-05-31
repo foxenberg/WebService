@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ASPGuid.Models
 {
-    
     public class Route
     {
         [BsonId]
@@ -15,5 +14,20 @@ namespace ASPGuid.Models
         public string Id { get; set; }
         [BsonElement("name")]
         public string Name { get; set; }
+        [BsonElement("city")]
+        public string City { get; set; }
+        [BsonElement("country")]
+        public string Country { get; set; }
+        [BsonElement("description")]
+        public string Description { get; set; }
+        [BsonElement("image")]
+        public string Image { get; set; }
+        [BsonElement("rating")]
+        public string Rating { get; set; }
+        [BsonElement("topic")]
+        public string Topic { get; set; }
+        public IEnumerable<PlacesForRoute> PlacesForRoute { get; set; }
+
+        
     }
 }

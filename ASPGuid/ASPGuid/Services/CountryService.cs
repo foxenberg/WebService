@@ -8,31 +8,31 @@ namespace ASPGuid.Services
 {
     public class CountryService
     {
-        private readonly IMongoCollection<Models.Country> _countries;
+        private readonly IMongoCollection<Models.Route> _countries;
 
         public CountryService(Models.IGuidDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _countries = database.GetCollection<Models.Country>(settings.CountriesCollectionName);
+            _countries = database.GetCollection<Models.Route>(settings.CountriesCollectionName);
         }
 
-        public List<Models.Country> Get() =>
+        public List<Models.Route> Get() =>
             _countries.Find(country => true).ToList();
 
-        public Models.Country Get(string Id) =>
-            _countries.Find<Models.Country>(country => country.Id == Id).FirstOrDefault();
+        public Models.Route Get(string Id) =>
+            _countries.Find<Models.Route>(country => country.Id == Id).FirstOrDefault();
 
-        public Models.Country Create(Models.Country country)
+        public Models.Route Create(Models.Route country)
         {
             _countries.InsertOne(country);
             return country;
         }
-        public void Update(string Id, Models.Country countryIn) =>
+        public void Update(string Id, Models.Route countryIn) =>
             _countries.ReplaceOne(country => country.Id == Id, countryIn);
 
-        public void Remove(Models.Country countryIn) =>
+        public void Remove(Models.Route countryIn) =>
            _countries.DeleteOne(country => country.Id == countryIn.Id);
         public void Remove(string Id) =>
             _countries.DeleteOne(country => country.Id == Id);
