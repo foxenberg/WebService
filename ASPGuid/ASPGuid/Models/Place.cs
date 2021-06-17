@@ -21,12 +21,16 @@ namespace ASPGuid.Models
         [BsonElement("photo")]
         public string Photo { get; set; }
         [BsonElement("rating")]
-        public string Rating { get; set; }
+        public double Rating { get; set; }
         [BsonElement("avgCost")]
         public string AvgCost { get; set; }
         [BsonElement("country")]
         public string Country { get; set; }
         [BsonElement("city")]
         public string City { get; set; }
+        [BsonElement("latitude")]
+        public double Latitude { get; set; }
+        [BsonElement("longitude")]
+        public double Longitude { get; set; }
     }
 }
